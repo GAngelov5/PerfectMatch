@@ -7,7 +7,23 @@
 <link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	$("#getAllUsers").on("click", getAllUsers);
 	
+	var getAllUsers = function () {
+		$.ajax({
+	        url : '/rest/user/allusers',
+	        type : "GET",
+	        dataType : "json",
+	        success : function(data, textStatus, jqXHR) {
+	            console.log(data);
+	            window.location.replace("http://localhost:8080/PerfectMatch/index.html");
+	        }
+	    });
+		
+	};
+	
+});
 </script>
 </head>
 
@@ -34,8 +50,20 @@
 						class="btn btn-primary" type="submit">Login</button></a> <a
 					href="register.html" class="register_form"><button
 						class="btn btn-primary" type="submit">Register</button></a>
+				<button id="getAllUsers" class="btn btn-primary" type="submit">GetUsers</button>
 			</form>
 		</div>
+	</div>
+	
+	<div>
+		<table id="user_table" class="table">
+			<tr>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Facebook</th>
+				<th>Gender</th>
+			</tr>
+		</table>
 	</div>
 	<!-- /container -->
 </body>

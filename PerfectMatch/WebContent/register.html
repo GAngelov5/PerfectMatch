@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+	function registerUser() {
+		var username = $("#userName").val();
+		var password = $("#pwd").val();
+		var facebook = $("#facebook").val();
+		var gender = $("input[name=sex]:checked").val();
+
+		var data = {
+			user : {
+				name : username,
+				password : password,
+				facebook : facebook,
+				gender : gender
+			}
+		}
+
+		$.ajax({
+			url : 'rest/user/register',
+			type : 'POST',
+			contentType : 'application/json',
+			data : JSON.stringify(data)
+		}).success(function(data) {
+			$("#register_form").attr("action", "register.html");
+			console.log("Na maika ti putkata");
+			window.location.replace("http://localhost:8080/PerfectMatch/index.html");
+		}).fail(function(data) {
+			$("#register_form").attr("action", "register.html");
+		});
+
+	};
+</script>
+</head>
+<body>
+	<form role="form" id="register_form" method="post" action="rest/user/register">
+		<div class="form-group">
+			<label for="userName">Username:</label> <input type="text"
+				class="form-control1" name="username" id="userName">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label> <input type="password"
+				class="form-control1" name="password" id="pwd">
+		</div>
+
+		<div class="form-group">
+			<label for="conf_pwd">Confirm password:</label> <input
+				type="password" class="form-control1" name="confirm_password"
+				id="conf_pwd">
+		</div>
+
+		<div class="form-group">
+			<label for="email">Facebook Account:</label> <input type="text"
+				class="form-control1" name="facebook" id="facebook">
+		</div>
+		<div class="register-switch">
+			<input type="radio" name="sex" value="F" id="sex_f"
+				class="register-switch-input" checked> <label for="sex_f"
+				class="register-switch-label">Female</label> <input type="radio"
+				name="sex" value="M" id="sex_m" class="register-switch-input">
+			<label for="sex_m" class="register-switch-label">Male</label>
+		</div>
+		<button type="reset" class="btn btn-default">Reset</button>
+		<button id="registerButton" type="submit" class="btn btn-default">Submit</button>
+	</form>
+</body>
+</html>*/

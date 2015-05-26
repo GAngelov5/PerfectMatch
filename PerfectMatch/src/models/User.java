@@ -24,6 +24,17 @@ public class User {
 	
 	private String gender;
 	
+	public User() {
+		
+	}
+	
+	public User(String name, String password, String facebook, String gender) {
+		this.name = name;
+		this.password = password;
+		this.facebook = facebook;
+		this.gender = gender;
+	}
+
 	public int getId() {
 		return id;
 	}
