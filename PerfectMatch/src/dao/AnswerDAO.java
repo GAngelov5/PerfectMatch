@@ -42,4 +42,15 @@ public class AnswerDAO {
 			return null;
 		}
 	}
+	
+	public int getPointsByAnswerId (int answerId) {
+		String text = "SELECT a.points FROM Answer a WHERE a.id =:answerId";
+		TypedQuery<Integer> query = em.createNamedQuery(text,Integer.class);
+		query.setParameter("id", answerId);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return 0;
+		}
+	}
 }

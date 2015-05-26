@@ -6,7 +6,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import models.Questions;
+import models.Question;
 
 @Singleton
 public class QuestionDAO {
@@ -18,13 +18,13 @@ public class QuestionDAO {
 		this.em = em;
 	}
 	
-	public void addQuestion(Questions question) {
+	public void addQuestion(Question question) {
 		em.persist(question);
 	}
 	
 	public String getQuestionById(long id) {
 		String text = "SELECT q FROM Questions q WHERE q.id =:id";
-		TypedQuery<Questions> query = em.createNamedQuery(text,Questions.class);
+		TypedQuery<Question> query = em.createNamedQuery(text,Question.class);
 		query.setParameter("id", id);
 		try {
 			return query.getSingleResult().getContent();
