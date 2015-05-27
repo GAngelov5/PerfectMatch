@@ -11,18 +11,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Answer")
-public class Answer implements Serializable{
+public class Answer implements Serializable {
 
 	private static final long serialVersionUID = -615479004370454815L;
-	
+
+	Answer() {
+	}
+
+	public Answer(String content, int points, Question questionId) {
+		this.content = content;
+		this.points = points;
+		this.questionId = questionId;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private String content;
-	
+
 	private int points;
-	
+
 	@ManyToOne
 	private Question questionId;
 
@@ -49,7 +58,5 @@ public class Answer implements Serializable{
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	
-	
-	
+
 }
