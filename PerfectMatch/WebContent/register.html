@@ -23,23 +23,24 @@
 		}
 
 		$.ajax({
-			url : 'rest/user/register',
-			type : 'POST',
-			contentType : 'application/json',
-			data : JSON.stringify(data)
-		}).success(function(data) {
-			$("#register_form").attr("action", "register.html");
-			console.log("Na maika ti putkata");
-			window.location.replace("http://localhost:8080/PerfectMatch/index.html");
-		}).fail(function(data) {
-			$("#register_form").attr("action", "register.html");
-		});
+				url : 'PerfectMatch/rest/user/register',
+				type : 'POST',
+				contentType : 'application/json',
+				data : JSON.stringify(data)
+			})
+			.success(
+					function(data) {
+						//$("#register_form").attr("action", "register.html");
+						window.location
+								.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+					}).fail(function(data) {
+				$("#register_form").attr("action", "register.html");
+			});
 
 	};
 </script>
 </head>
 <body>
-	<form role="form" id="register_form" method="post" action="rest/user/register">
 		<div class="form-group">
 			<label for="userName">Username:</label> <input type="text"
 				class="form-control1" name="username" id="userName">
@@ -67,7 +68,7 @@
 			<label for="sex_m" class="register-switch-label">Male</label>
 		</div>
 		<button type="reset" class="btn btn-default">Reset</button>
-		<button id="registerButton" type="submit" class="btn btn-default">Submit</button>
-	</form>
+		<button id="registerButton" class="btn btn-default"
+			onClick='registerUser()'>Submit</button>
 </body>
-</html>*/
+</html>

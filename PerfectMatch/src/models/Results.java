@@ -22,13 +22,13 @@ public class Results implements Serializable {
 	private int id;
 	
 	@ManyToOne
-	private int answerId;
+	private Answer answerId;
 	
 	@ManyToOne
-	private int questionId;
+	private Question questionId;
 	
 	@ManyToOne
-	private int userId;
+	private Answer userId;
 
 	public int getId() {
 		return id;
@@ -38,30 +38,31 @@ public class Results implements Serializable {
 		this.id = id;
 	}
 
-	public int getAnswerId() {
+	public Answer getAnswerId() {
 		return answerId;
 	}
 
-	public void setAnswerId(int answerId) {
+	public void setAnswerId(Answer answerId) {
 		this.answerId = answerId;
 	}
 
-	public int getQuestionId() {
+	public Question getQuestionId() {
 		return questionId;
 	}
 
-	public void setQuestionId(int questionId) {
+	public void setQuestionId(Question questionId) {
 		this.questionId = questionId;
 	}
 
-	public int getUserId() {
+	public Answer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Answer userId) {
 		this.userId = userId;
 	}
 
+	
 	
 	
 

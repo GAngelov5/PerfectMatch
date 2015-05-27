@@ -3,8 +3,8 @@ package services;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,27 +21,29 @@ public class UserManager {
 	// @EJB
 	// private UserDAO userDao;
 
-	// @EJB
-	// private UserContext userContext;
+	@Inject
+	private UserContext userContext;
 
 	@POST
 	@Path("register")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void registerUser(@FormParam("username") String name,
-			@FormParam("password") String password,
-			@FormParam("facebook") String facebook,
-			@FormParam("sex") String gender) {
-		System.out.println("brr");
-		User newUser = new User(name, password, facebook, gender);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void registerUser(User newUser) {
+		//User newUser = new User(name, password, facebook, gender);
 		Data.users.add(newUser);
-		// userContext.setCurrentUser(newUser);
-		//return newUser;
+		//userContext.setCurrentUser(newUser);
+	}
+	
+	@GET
+	@Path("getCurrentUserName")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getUserName() {
+		return Data.users;
 	}
 
 	@GET
 	@Path("allusers")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> getAllUsers() {
-		return Data.users;
+	@Produces(MediaType.TEXT_HTML)
+	public String getAllUsers() {
+		return Data.users.get(Data.users.size()-1).getName();
 	}
 }
