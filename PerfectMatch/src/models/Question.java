@@ -20,6 +20,8 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
+	
+	
 	private String content;
 
 	public String getContent() {

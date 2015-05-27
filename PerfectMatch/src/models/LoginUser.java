@@ -1,0 +1,37 @@
+package models;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class LoginUser {
+	private String userName;
+	
+	private String password;
+	
+	public LoginUser() {
+		
+	}
+	
+	public LoginUser(String name, String password) {
+		this.userName = name;
+		this.password = password;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+}

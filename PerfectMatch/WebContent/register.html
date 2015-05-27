@@ -22,53 +22,53 @@
 			}
 		}
 
-		$.ajax({
-				url : 'PerfectMatch/rest/user/register',
-				type : 'POST',
-				contentType : 'application/json',
-				data : JSON.stringify(data)
-			})
-			.success(
-					function(data) {
-						//$("#register_form").attr("action", "register.html");
-						window.location
-								.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
-					}).fail(function(data) {
-				$("#register_form").attr("action", "register.html");
-			});
+		$
+				.ajax({
+					url : 'PerfectMatch/rest/user/register',
+					type : 'POST',
+					contentType : 'application/json',
+					data : JSON.stringify(data)
+				})
+				.success(
+						function(data) {
+							//$("#register_form").attr("action", "register.html");
+							window.location
+									.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+						}).fail(function(data) {
+					alert("Something is wrong");
+				});
 
 	};
 </script>
 </head>
 <body>
-		<div class="form-group">
-			<label for="userName">Username:</label> <input type="text"
-				class="form-control1" name="username" id="userName">
-		</div>
-		<div class="form-group">
-			<label for="pwd">Password:</label> <input type="password"
-				class="form-control1" name="password" id="pwd">
-		</div>
+	<div class="form-group">
+		<label for="userName">Username:</label> <input type="text"
+			class="form-control1" name="username" id="userName">
+	</div>
+	<div class="form-group">
+		<label for="pwd">Password:</label> <input type="password"
+			class="form-control1" name="password" id="pwd">
+	</div>
 
-		<div class="form-group">
-			<label for="conf_pwd">Confirm password:</label> <input
-				type="password" class="form-control1" name="confirm_password"
-				id="conf_pwd">
-		</div>
+	<div class="form-group">
+		<label for="conf_pwd">Confirm password:</label> <input type="password"
+			class="form-control1" name="confirm_password" id="conf_pwd">
+	</div>
 
-		<div class="form-group">
-			<label for="email">Facebook Account:</label> <input type="text"
-				class="form-control1" name="facebook" id="facebook">
-		</div>
-		<div class="register-switch">
-			<input type="radio" name="sex" value="F" id="sex_f"
-				class="register-switch-input" checked> <label for="sex_f"
-				class="register-switch-label">Female</label> <input type="radio"
-				name="sex" value="M" id="sex_m" class="register-switch-input">
-			<label for="sex_m" class="register-switch-label">Male</label>
-		</div>
-		<button type="reset" class="btn btn-default">Reset</button>
-		<button id="registerButton" class="btn btn-default"
-			onClick='registerUser()'>Submit</button>
+	<div class="form-group">
+		<label for="email">Facebook Account:</label> <input type="text"
+			class="form-control1" name="facebook" id="facebook">
+	</div>
+	<div class="register-switch">
+		<input type="radio" name="sex" value="F" id="sex_f"
+			class="register-switch-input" checked> <label for="sex_f"
+			class="register-switch-label">Female</label> <input type="radio"
+			name="sex" value="M" id="sex_m" class="register-switch-input">
+		<label for="sex_m" class="register-switch-label">Male</label>
+	</div>
+	<button type="reset" class="btn btn-default">Reset</button>
+	<button id="registerButton" class="btn btn-default"
+		onClick='registerUser()'>Submit</button>
 </body>
 </html>

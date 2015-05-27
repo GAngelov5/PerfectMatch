@@ -7,7 +7,32 @@
 <link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
-	
+	function loginUser() {
+		var username = $("#inputUsername").val();
+		var password = $("#inputPassword").val();
+
+		var data = {
+				loginUser: {
+					name : username,
+					password : password,
+				}
+		}
+
+		$.ajax({
+			url : 'PerfectMatch/rest/user/login',
+			type : 'POST',
+			contentType : 'application/json',
+			data : JSON.stringify(data)
+		}).success(
+			function(data) {
+				//$("#register_form").attr("action", "register.html");
+				window.location
+						.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+		}).fail(function(data) {
+			alert("Something is wrong");
+	});
+
+	};
 </script>
 </head>
 
@@ -17,24 +42,23 @@
 	</div>
 	<div class="container">
 		<div class="col-md-3">
-				<h2 class="form-signin-heading">Sign in</h2>
-				<label for="inputUsername" class="sr-only">Username</label> <input
-					type="text" id="inputUsername" class="form-control"
-					placeholder="Username" required autofocus> <label
-					for="inputPassword" class="sr-only">Password</label> <input
-					type="password" id="inputPassword" class="form-control"
-					placeholder="Password" required>
-				<div class="checkbox">
-					<label> <input type="checkbox" value="remember-me">
-						Remember me
-					</label>
-				</div>
-				<a href="login.html" class="login_form"><button
-						class="btn btn-primary" type="submit">Login</button></a> <a
-					href="register.html" class="register_form"><button
-						class="btn btn-primary" type="submit">Register</button></a>
-				<button id="getAllUsers" class="btn btn-primary" type="submit">GetUsers</button>
-			
+			<h2 class="form-signin-heading">Sign in</h2>
+			<label for="inputUsername" class="sr-only">Username</label> <input
+				type="text" id="inputUsername" class="form-control"
+				placeholder="Username" required autofocus> <label
+				for="inputPassword" class="sr-only">Password</label> <input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required>
+			<div class="checkbox">
+				<label> <input type="checkbox" value="remember-me">
+					Remember me
+				</label>
+			</div>
+			<button id="loginButton" class="btn btn-primary"
+				onClick="loginUser()">Login</button>
+			<a href="register.html" class="register_form"><button
+					class="btn btn-primary" type="submit">Register</button></a>
+
 		</div>
 	</div>
 </body>

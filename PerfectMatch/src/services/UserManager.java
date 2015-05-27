@@ -11,6 +11,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.google.gson.Gson;
+
+import models.LoginUser;
 import models.User;
 import dummyDatabase.Data;
 
@@ -21,8 +24,8 @@ public class UserManager {
 	// @EJB
 	// private UserDAO userDao;
 
-	@Inject
-	private UserContext userContext;
+//	@Inject
+//	private UserContext userContext;
 
 	@POST
 	@Path("register")
@@ -33,6 +36,15 @@ public class UserManager {
 		//userContext.setCurrentUser(newUser);
 	}
 	
+	@POST
+	@Path("login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void loginUser(LoginUser newUser) {
+		//User newUser = new User(name, password, facebook, gender);
+		System.out.println(newUser.getUserName());
+		//userContext.setCurrentUser(newUser);
+	}
+	
 	@GET
 	@Path("getCurrentUserName")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -40,10 +52,4 @@ public class UserManager {
 		return Data.users;
 	}
 
-	@GET
-	@Path("allusers")
-	@Produces(MediaType.TEXT_HTML)
-	public String getAllUsers() {
-		return Data.users.get(Data.users.size()-1).getName();
-	}
 }
