@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 
+import models.Answer;
 import models.LoginUser;
 import models.User;
 import dummyDatabase.Data;
@@ -68,5 +69,12 @@ public class UserManager {
 	public String getCurrentUserName() {
 		return currentUser.getName();
 		// get  from UserContext currentUser and print his name !
+	}
+	
+	@POST
+	@Path("getanswer")
+	@Consumes(MediaType.TEXT_PLAIN)
+	public void getAnswerPoints(String a) {
+		System.out.println(a);
 	}
 }

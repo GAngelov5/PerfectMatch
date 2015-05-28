@@ -8,7 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
 @Table(name = "Answer")
 public class Answer implements Serializable {
@@ -28,6 +30,10 @@ public class Answer implements Serializable {
 	private Question questionId;
 
 	Answer() {
+	}
+	
+	public Answer(int points){
+		System.out.println(points);
 	}
 	
 	public Answer(int id, String content, int points, Question questionId) {

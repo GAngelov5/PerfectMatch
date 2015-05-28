@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import models.Answer;
 import models.Question;
@@ -34,7 +36,7 @@ public class TestManager {
 	private static int i = 0;
 
 	@GET
-	@Path("generateTest")
+	@Path("/generateTest")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String generateTest() {
 		if (i == questions.size()) {
@@ -56,10 +58,10 @@ public class TestManager {
 	}
 	
 	@POST
-	@Path("getSingleAnswer")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void getAnswerPoints(Answer ans) {
-		System.out.println(ans);
+	@Path("getanswer")
+	@Consumes(MediaType.APPLICATION_JSON)	
+	public void getAnswerPoints(String a) {
+		System.out.println(a);
 	}
 
 }

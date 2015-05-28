@@ -22,12 +22,13 @@
 							window.location
 									.replace("http://localhost:8080/PerfectMatch/finalizeTest.html");
 						} else {
+
 							$("#questionId").append(data.question.content);
 							for (var i = 0; i < data.possibleAnswers.length; i++) {
 								var id = i + 1;
 								$("#answer" + id.toString()).append(
 										data.possibleAnswers[i].content);
-								
+
 							}
 						}
 					}
@@ -36,34 +37,31 @@
 
 	function getAnswer() {
 		var answerValue = $("input[name=answer]:checked").val();
-		var question = $("#questionId").val();
 
 		console.log(answerValue); //0,1,2
-		console.log(question);   //null
-		var data = {
-				answer : {
-					points : answerValue,
-					questionId : question,
-				}
-			}
+		
+		var answer = {
+			points : parseInt(answerValue)
+		}
 		$
 				.ajax({
-					url : "PerfectMatch/rest/test/getSingleAnswer",
-					type : "POST",
-					dataType : "application/json",
-					data : JSON.stringify(data)
-						
+					url : 'PerfectMatch/rest/user/getanswer',
+					type : 'POST',
+					contentType : 'application/json',
+					//data : JSON.stringify(answer)
+					data : { points : parseInt(answerValue) },
+					dataType:"json",
+
 				})
 				.success(
 						function(data) {
-							//$("#register_form").attr("action", "register.html");
 							window.location
 									.replace("http://localhost:8080/PerfectMatch/test.html");
-						}).fail(function(data) {
-							console.log(data);
+				})
+				.fail(function(data) {
+					console.log(data);
 					alert("Something is wrong");
 				});
-		;
 
 	};
 </script>
@@ -72,14 +70,14 @@
 	<section class="questions">
 		<div class="title">Questions</div>
 		<!--<input type="text" id="user" required title="Username required" placeholder="Username" data-icon="U">
-			<input type="password" required title="Password required" placeholder="Password" data-icon="x">
-			<input type="password" required title="Password required" placeholder="Repeat Password" data-icon="x">
-            <input type="text" id="face"required title="Facebook required" placeholder="Facebook" data-icon="F">&ndash;&gt;
-			&lt;!&ndash;<div class="register">
-				<div class="col"><a href="#" title="New User Start Here">Register</a></div>
-				&lt;!&ndash;<div class="col"><a href="#" title="Recuperar Password">Fotgot Password?</a></div>&ndash;&gt;
-			</div>&ndash;&gt;
-           &lt;!&ndash; <p></p>-->
+				<input type="password" required title="Password required" placeholder="Password" data-icon="x">
+				<input type="password" required title="Password required" placeholder="Repeat Password" data-icon="x">
+	            <input type="text" id="face"required title="Facebook required" placeholder="Facebook" data-icon="F">&ndash;&gt;
+				&lt;!&ndash;<div class="register">
+					<div class="col"><a href="#" title="New User Start Here">Register</a></div>
+					&lt;!&ndash;<div class="col"><a href="#" title="Recuperar Password">Fotgot Password?</a></div>&ndash;&gt;
+				</div>&ndash;&gt;
+	           &lt;!&ndash; <p></p>-->
 		<div class="question">
 			<label id="questionId"></label>
 		</div>
