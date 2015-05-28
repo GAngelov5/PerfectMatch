@@ -12,7 +12,7 @@
 	});
 	function getName() {
 		$.ajax({
-			url : 'PerfectMatch/rest/user/currentUserName',
+			url : '/PerfectMatch/rest/user/currentUserName',
 			type : "GET",
 			dataType : "text",
 			success : function(data) {
@@ -25,8 +25,8 @@
 	};
 
 	function prepareTest() {
-		window.location
-				.replace("http://localhost:8080/PerfectMatch/test.html");
+		window.location = "/PerfectMatch/test.html";
+				//.replace("http://localhost:8080/PerfectMatch/test.html");
 	}
 </script>
 

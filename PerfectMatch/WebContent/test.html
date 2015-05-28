@@ -14,13 +14,13 @@
 	function generateTest() {
 		$
 				.ajax({
-					url : 'PerfectMatch/rest/test/generateTest',
+					url : '/PerfectMatch/rest/test/generateTest',
 					type : "GET",
 					dataType : "json",
 					success : function(data) {
 						if (jQuery.isEmptyObject(data)) {
-							window.location
-									.replace("http://localhost:8080/PerfectMatch/finalizeTest.html");
+							window.location = "/PerfectMatch/finalizeTest.html";
+									//.replace("http://localhost:8080/PerfectMatch/finalizeTest.html");
 						} else {
 
 							$("#questionId").append(data.question.content);
@@ -37,26 +37,23 @@
 
 	function getAnswer() {
 		var answerValue = $("input[name=answer]:checked").val();
-
+		
 		console.log(answerValue); //0,1,2
 		
-		var answer = {
-			points : parseInt(answerValue)
-		}
 		$
 				.ajax({
-					url : 'PerfectMatch/rest/user/getanswer',
+					url : '/PerfectMatch/rest/test/getanswer',
 					type : 'POST',
-					contentType : 'application/json',
+					contentType : 'text/plain',
 					//data : JSON.stringify(answer)
-					data : { points : parseInt(answerValue) },
-					dataType:"json",
+					dataType: "text", 
+					data : answerValue.toString()
 
 				})
 				.success(
 						function(data) {
-							window.location
-									.replace("http://localhost:8080/PerfectMatch/test.html");
+							window.location = "/PerfectMatch/test.html";
+									//.replace("http://localhost:8080/PerfectMatch/test.html");
 				})
 				.fail(function(data) {
 					console.log(data);

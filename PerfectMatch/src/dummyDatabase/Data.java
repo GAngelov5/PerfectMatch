@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import models.Answer;
 import models.Question;
@@ -19,10 +20,12 @@ public class Data {
 	
 	public Data() {
 		users = new ArrayList<User>();
-		users.add(new User("Stella", "123456", "www.facebook.com/stela", "f"));
-		users.add(new User("Galin", "Test1234", "www.facebook.com/galin", "m"));
-		users.add(new User("Kiro", "TestDa", "www.facebook.com/kiro", "m"));
-		users.add(new User("Milena","qwerty","www.facebook,com/milencheto","f"));
+		
+	
+		users.add(new User("Stella", "123456", "www.facebook.com/stela", "f",this.custom(2)));
+		users.add(new User("Galin", "Test1234", "www.facebook.com/galin", "m",this.custom(2)));
+		users.add(new User("Kiro", "TestDa", "www.facebook.com/kiro", "m",this.custom(1)));
+		users.add(new User("Milena","qwerty","www.facebook,com/milencheto","f",this.generatePoints()));
 		
 		questions = new ArrayList<Question>();
 		questions.add(new Question("About how long do you want your next relationship to last?"));
@@ -64,7 +67,7 @@ public class Data {
 	}
 	
 	public  void addNewUser(String name,String password,String facebook,String gender) {
-		User newUser = new User(name, password, facebook, gender);
+		User newUser = new User(name, password, facebook, gender,this.generatePoints());
 		users.add(newUser);
 	}
 	
@@ -129,4 +132,43 @@ public class Data {
 		this.answers = answers;
 	}
 
+	public List<User> getUsersByGender(String gender) {
+		List<User> result = new ArrayList<User>();
+		for ( User u : users) {
+			if (u.getGender().equals(gender)) {
+				result.add(u);
+			}
+		}
+		return result;
+	}
+	
+	public List<Integer> generatePoints() {
+		List<Integer> res = new ArrayList<Integer>();
+		Random rand = new Random();
+		for (int i=0;i<questions.size();i++) {
+			res.add(rand.nextInt(3));
+		}
+		return res;
+	}
+	
+	public List<Integer> getUserPoints(User user) {
+		for (User u : users) {
+			if (u.equals(user)) {
+				return u.getResultPoints();
+			}
+		}
+		return null;
+	}
+	
+	public List<Integer> custom (int i) {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(i);
+		listPoints.add(i);
+		listPoints.add(i);
+		listPoints.add(i);
+		listPoints.add(i);
+		listPoints.add(i);
+		listPoints.add(i);
+		return listPoints;
+	}
 }

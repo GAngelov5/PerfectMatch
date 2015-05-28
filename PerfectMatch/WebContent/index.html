@@ -19,15 +19,15 @@
 		}
 
 		$.ajax({
-			url : 'PerfectMatch/rest/user/login',
+			url : '/PerfectMatch/rest/user/login',
 			type : 'POST',
 			contentType : 'application/json',
 			data : JSON.stringify(data)
 		}).success(
 			function(data) {
 				//$("#register_form").attr("action", "register.html");
-				window.location
-						.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+				window.location = "/PerfectMatch/prepareTest.html";
+						//.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
 		}).fail(function(data) {
 			alert("Something is wrong");
 	});

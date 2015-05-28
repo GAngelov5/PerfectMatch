@@ -25,11 +25,10 @@ public class UserManager {
 	// @EJB
 	// private UserDAO userDao;
 
-//	@Inject
-//	private UserContext userContext;
+	//private UserContext currentUser;
 	
 	private Data testData = new Data();
-	private User currentUser;
+	//private User currentUser;
 
 	@POST
 	@Path("register")
@@ -37,7 +36,8 @@ public class UserManager {
 	public void registerUser(User newUser) {
 		//User newUser = new User(name, password, facebook, gender);
 		testData.addNewUser(newUser);
-		currentUser = newUser;
+		//currentUser.setCurrentUser(newUser); 
+		UserContext.currentUser = newUser;
 		//userContext.setCurrentUser(newUser);
 	}
 	
@@ -50,10 +50,10 @@ public class UserManager {
 //			userContext.setCurrentUser(user);
 //		}
 		if (testData.isCorrect(newUser.getName(), newUser.getPassword())) {
-			currentUser = newUser;
+			//currentUser.setCurrentUser(newUser);
+			UserContext.currentUser = newUser;
 		}
 		//System.out.println(newUser.getName());
-		//userContext.setCurrentUser(newUser);
 	}
 	
 	@GET
@@ -67,14 +67,8 @@ public class UserManager {
 	@Path("currentUserName")
 	@Produces(MediaType.TEXT_HTML)
 	public String getCurrentUserName() {
-		return currentUser.getName();
+		return UserContext.currentUser.getName();
 		// get  from UserContext currentUser and print his name !
 	}
 	
-	@POST
-	@Path("getanswer")
-	@Consumes(MediaType.TEXT_PLAIN)
-	public void getAnswerPoints(String a) {
-		System.out.println(a);
-	}
 }

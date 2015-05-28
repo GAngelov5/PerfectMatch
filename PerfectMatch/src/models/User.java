@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,15 +26,18 @@ public class User {
 	
 	private String gender;
 	
+	private List<Integer> resultPoints;
+	
 	public User() {
 		
 	}
 	
-	public User(String name, String password, String facebook, String gender) {
+	public User(String name, String password, String facebook, String gender,List<Integer> resultPoints) {
 		this.name = name;
 		this.password = password;
 		this.facebook = facebook;
 		this.gender = gender;
+		this.setResultPoints(resultPoints);
 	}
 
 	public int getId() {
@@ -118,6 +123,14 @@ public class User {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
+	}
+
+	public List<Integer> getResultPoints() {
+		return resultPoints;
+	}
+
+	public void setResultPoints(List<Integer> resultPoints) {
+		this.resultPoints = resultPoints;
 	}
 
 	
