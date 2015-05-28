@@ -20,15 +20,15 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	Question() {
+	private String content;
+	
+	public Question() {
 		
 	}
 	
 	public Question(String content) {
 		this.content = content;
 	}
-
-	private String content;
 
 	public String getContent() {
 		return content;

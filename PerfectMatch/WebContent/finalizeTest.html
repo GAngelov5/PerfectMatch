@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script>
+$(document).ready(function(){
+	 $.ajax({
+	        url : '/PerfectMatch/rest/test/getresults',
+	        type : "GET",
+	        dataType : "json",
+	        success : function(data) {
+	        	for (var key in data) {
+	        		str += "<li>" + key + ": "+data[key]+"</li>";
+	        	}
+	        	str += "</ul>";
+	        	$("body").append(str);
+	        }
+	    });
+});
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

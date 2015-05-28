@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
+<link rel="stylesheet" type="text/css" href="styles/maximstyle.css" />
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script>
+	$(document).ready(function() {
+		generateTest();
+	});
+	function generateTest() {
+		$
+				.ajax({
+					url : '/PerfectMatch/rest/test/generateTest',
+					type : "GET",
+					dataType : "json",
+					success : function(data) {
+						if (jQuery.isEmptyObject(data)) {
+							window.location = "/PerfectMatch/finalizeTest.html";
+									//.replace("http://localhost:8080/PerfectMatch/finalizeTest.html");
+						} else {
+
+							$("#questionId").append(data.question.content);
+							for (var i = 0; i < data.possibleAnswers.length; i++) {
+								var id = i + 1;
+								$("#answer" + id.toString()).append(
+										data.possibleAnswers[i].content);
+
+							}
+						}
+					}
+				});
+	};
+
+	function getAnswer() {
+		var answerValue = $("input[name=answer]:checked").val();
+		
+		console.log(answerValue); //0,1,2
+		
+		$
+				.ajax({
+					url : '/PerfectMatch/rest/test/getanswer',
+					type : 'POST',
+					contentType : 'text/plain',
+					//data : JSON.stringify(answer)
+					dataType: "text", 
+					data : answerValue.toString()
+
+				})
+				.success(
+						function(data) {
+							window.location = "/PerfectMatch/test.html";
+									//.replace("http://localhost:8080/PerfectMatch/test.html");
+				})
+				.fail(function(data) {
+					console.log(data);
+					alert("Something is wrong");
+				});
+
+	};
+</script>
+</head>
+<body>
+	<section class="questions">
+		<div class="title">Questions</div>
+		<!--<input type="text" id="user" required title="Username required" placeholder="Username" data-icon="U">
+				<input type="password" required title="Password required" placeholder="Password" data-icon="x">
+				<input type="password" required title="Password required" placeholder="Repeat Password" data-icon="x">
+	            <input type="text" id="face"required title="Facebook required" placeholder="Facebook" data-icon="F">&ndash;&gt;
+				&lt;!&ndash;<div class="register">
+					<div class="col"><a href="#" title="New User Start Here">Register</a></div>
+					&lt;!&ndash;<div class="col"><a href="#" title="Recuperar Password">Fotgot Password?</a></div>&ndash;&gt;
+				</div>&ndash;&gt;
+	           &lt;!&ndash; <p></p>-->
+		<div class="question">
+			<label id="questionId"></label>
+		</div>
+		<p></p>
+		<div class="answer">
+			<input name="answer" type="radio" class="answer" value="2"> <label
+				id="answer1" for="radio1"></label>
+		</div>
+		<div class="answer">
+			<input name="answer" type="radio" class="answer" value="1"> <label
+				id="answer2" for="radio1"></label>
+		</div>
+		<div class="answer">
+			<input name="answer" type="radio" class="answer" value="0"> <label
+				id="answer3" for="radio1"></label>
+		</div>
+		<p></p>
+		<button onClick="getAnswer()" class="btn btn-primary">Next</button>
+		<p></p>
+	</section>
+</body>
+</html>

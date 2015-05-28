@@ -2,22 +2,22 @@ package services;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.SessionScoped;
-
 import models.User;
+import dummyDatabase.Data;
 
-@SessionScoped
 public class UserContext implements Serializable{
 	
 	private static final long serialVersionUID = -9137745602092002810L;
 	
-	private User currentUser;
+	private static Data dataTest = new Data();
 	
-	public User getCurrentUser() {
-		return currentUser;
-	}
+	public static User currentUser;
 	
-	public void setCurrentUser(User user) {
-		this.currentUser = user;
-	}
+//	public static User getCurrentUser() {
+//		return currentUser;
+//	}
+//	
+//	public void setCurrentUser(User user) {
+//		this.currentUser = user;
+//	}
 }
