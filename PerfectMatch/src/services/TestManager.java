@@ -1,41 +1,65 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
-import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dao.AnswerDAO;
-import dao.QuestionDAO;
+import models.Answer;
+import models.Question;
+
+import com.google.gson.Gson;
+
 import dummyDatabase.Data;
 
 @Stateless
 @Path("test")
 public class TestManager {
-	
-	@Inject
-	private AnswerDAO answerDao;
-	
-	@Inject
-	private QuestionDAO questionDao;
-	
-//	@Produce(MediaType.APPLICATION_JSON)
-//	public generateTest() {
-//		
-//	}
-	
+
+	// @Inject
+	// private AnswerDAO answerDao;
+	//
+	// @Inject
+	// private QuestionDAO questionDao;
+
+	private Data testData = new Data();
+
+	private List<Question> questions = testData.getQuestions();
+
+	private static int i = 0;
+
 	@GET
-	@Path("currentUser")
-	@Produces(MediaType.TEXT_HTML)
-	public String getCurrentUserName() {
-		if (Data.users.size() != 0) {
-			return Data.users.get(Data.users.size()-1).getName();			
+	@Path("generateTest")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String generateTest() {
+		if (i == questions.size()) {
+			i = 0;
+			return "{}";
+		} else {
+			Question currentQuestion = questions.get(i);
+			List<Answer> currQuestionAnswers = testData
+					.getAnswersByQuestion(currentQuestion);
+			GenerateQuestion generator = new GenerateQuestion(currentQuestion,
+					currQuestionAnswers);
+			Gson gson = new Gson();
+			
+			// convert java object to JSON format
+			String json = gson.toJson(generator);
+			i++;
+			return json;
 		}
-		return "No users";
-		// get  from UserContext currentUser and print his name !
 	}
 	
-	
+	@POST
+	@Path("getSingleAnswer")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void getAnswerPoints(Answer ans) {
+		System.out.println(ans);
+	}
+
 }

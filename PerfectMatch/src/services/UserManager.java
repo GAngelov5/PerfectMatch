@@ -26,30 +26,47 @@ public class UserManager {
 
 //	@Inject
 //	private UserContext userContext;
+	
+	private Data testData = new Data();
+	private User currentUser;
 
 	@POST
 	@Path("register")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void registerUser(User newUser) {
 		//User newUser = new User(name, password, facebook, gender);
-		Data.users.add(newUser);
+		testData.addNewUser(newUser);
+		currentUser = newUser;
 		//userContext.setCurrentUser(newUser);
 	}
 	
 	@POST
 	@Path("login")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void loginUser(LoginUser newUser) {
-		//User newUser = new User(name, password, facebook, gender);
-		System.out.println(newUser.getUserName());
+	public void loginUser(User newUser) {
+//		--> User user
+//		if ( userDao.validateUserCredentials(user.getName(), user.getPassword())) {
+//			userContext.setCurrentUser(user);
+//		}
+		if (testData.isCorrect(newUser.getName(), newUser.getPassword())) {
+			currentUser = newUser;
+		}
+		//System.out.println(newUser.getName());
 		//userContext.setCurrentUser(newUser);
 	}
 	
 	@GET
-	@Path("getCurrentUserName")
+	@Path("getAllUsers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<User> getUserName() {
-		return Data.users;
+		return testData.getUsers();
 	}
 
+	@GET
+	@Path("currentUserName")
+	@Produces(MediaType.TEXT_HTML)
+	public String getCurrentUserName() {
+		return currentUser.getName();
+		// get  from UserContext currentUser and print his name !
+	}
 }

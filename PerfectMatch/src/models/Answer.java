@@ -15,14 +15,6 @@ public class Answer implements Serializable {
 
 	private static final long serialVersionUID = -615479004370454815L;
 
-	Answer() {
-	}
-
-	public Answer(String content, int points, Question questionId) {
-		this.content = content;
-		this.points = points;
-		this.questionId = questionId;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +26,16 @@ public class Answer implements Serializable {
 
 	@ManyToOne
 	private Question questionId;
+
+	Answer() {
+	}
+	
+	public Answer(int id, String content, int points, Question questionId) {
+		this.id = id;
+		this.content = content;
+		this.points = points;
+		this.questionId = questionId;
+	}
 
 	public int getId() {
 		return id;
@@ -59,4 +61,13 @@ public class Answer implements Serializable {
 		this.points = points;
 	}
 
+	public Question getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(Question questionId) {
+		this.questionId = questionId;
+	}
+
+	
 }
