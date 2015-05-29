@@ -18,7 +18,7 @@ $(document).ready(
 					for ( var key in data) {
 						var points = data[key].indexOf("_");
 						str += "<li>" + key + ": "
-								+ data[key].substring(0, points) + " fb: "
+								+ data[key].substring(0, points) + "%    "
 								+ "<a href=\"" +data[key].substring(points+1, data[key].length) + "\">Facebook</a>"
 						"</li>";
 					}
