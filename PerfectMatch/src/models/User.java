@@ -61,7 +61,8 @@ public class User {
 	}
 
 	public void setFacebook(String facebook) {
-		this.facebook = facebook;
+		String fb = "https://" + facebook;
+		this.facebook = fb;
 	}
 
 	public String getGender() {

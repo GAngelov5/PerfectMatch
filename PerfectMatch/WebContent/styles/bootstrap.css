@@ -19,12 +19,17 @@ background-size: cover;
 background: url('wallpaper/panda3.png') no-repeat center center fixed;
 background-size:cover;
 }
-.question {
+.question_image {
 background: url('wallpaper/rose.jpg') no-repeat center center fixed;
 background-size:cover;
 }
 .final{
-background: url() no-repeat center center fixed;
+background: url('wallpaper/panda_wallpaper.png') no-repeat center center fixed;
+background-size:cover;
+}
+.prepare{
+background: url('wallpaper/prepareTest_image.png') no-repeat center center fixed;
+background-size:cover
 }
 
 html {

@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+
+.btn-primary1 {
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+	position : relative;
+	top : 200px;
+}
+
 .form-control1 {
 	display: block;
 	height: 34px;
@@ -21,10 +30,16 @@
 	padding: 6px 12px
 }
 
-.div_position {
+.div_position1 {
 	position: relative;
 	left: 200px;
 	top: 150px
+}
+
+.div_position {
+	position: relative;
+	left: 200px;
+	top: 350px;
 }
 
 
@@ -253,11 +268,28 @@ input {
 	width: auto; 
 }
 
+.finalizeLook {
+	position : relative;
+	top: 15px;
+}
+
 .btnArea {
   width: 50%; 
   height: 30px; 
   border: 1px solid; 
   text-align:center;
+  
+}
+
+.btnArea2 {
+  width: 50%; 
+  height: 30px; 
+  border: 1px solid; 
+  text-align:center;
+  
+}
+.answersArea2 {
+	right: 42px;
   
 }
  

@@ -19,21 +19,27 @@ public class DataInitializer {
 	public DataInitializer() {
 		users = new ArrayList<User>();
 
-		users.add(new User("Stella", "123456", "https://www.facebook.com/stella.gavrailova",
-				"f", customStella()));
-		users.add(new User("Galin", "Test1234", "www.facebook.com/galin",
+		users.add(new User("Cvetelina Kostadinova", "123456", "https://www.facebook.com/cwetelinaaaa",
+				"f", customCveti()));
+		users.add(new User("Atanas Yanchevski", "Test1234", "https://www.facebook.com/atanas.yanchevski",
 				"m", custom(2)));
-		users.add(new User("Kiro", "TestDa", "www.facebook.com/kiro", "m",
-				custom(1)));
-		users.add(new User("Milena", "qwerty",
-				"www.facebook,com/milencheto", "f", custom(1)));
+		users.add(new User("Ivaylo Bachvarov", "TestDa", "https://www.facebook.com/bachvarof", "m",
+				customIvo()));
+		users.add(new User("Radoslav Georgiev", "qwerty",
+				"https://www.facebook.com/radorado.radoslav.georgiev", "m", customRado()));
+		users.add(new User("Gabriela Gavrailova", "asdfg",
+				"https://www.facebook.com/gabriela.gavrailova", "f", customGabi()));
+		users.add(new User("Radina Grozeva", "asdfge",
+				"https://www.facebook.com/rrradina", "f", customStella()));
 
 		questions = new ArrayList<Question>();
 		questions.add(new Question(
 				"About how long do you want your next relationship to last?"));
 		questions.add(new Question(
 				"Would you consider sleeping with someone on first date?"));
-		questions.add(new Question("Rate your self-confidance:"));
+		questions
+			.add(new Question(
+				"If you had to name your greatest motivation in life thus far,what would it be?"));
 		questions.add(new Question(
 				"How important is religion/God in your life?"));
 		questions.add(new Question(
@@ -41,9 +47,7 @@ public class DataInitializer {
 		questions
 				.add(new Question(
 						"Would you need to sleep with someone before you considered marring them?"));
-		questions
-				.add(new Question(
-						"If you had to name your greatest motivation in life thus far,what would it be?"));
+		questions.add(new Question("Java or JavaScript?:"));
 
 		answers = new ArrayList<Answer>();
 		answers.add(new Answer(0, "One night", 0,questions.get(0)));
@@ -57,9 +61,9 @@ public class DataInitializer {
 				.get(1)));
 		answers.add(new Answer(5, "No", 2, questions.get(1)));
 
-		answers.add(new Answer(6, "Very high", 0, questions.get(2)));
-		answers.add(new Answer(7, "Average", 1, questions.get(2)));
-		answers.add(new Answer(8, "Below average", 2, questions
+		answers.add(new Answer(6, "Love", 0, questions.get(2)));
+		answers.add(new Answer(7, "Knowledge", 1, questions.get(2)));
+		answers.add(new Answer(8, "Wealth", 2, questions
 				.get(2)));
 
 		answers.add(new Answer(9, "Extreamly important", 0, questions
@@ -78,9 +82,10 @@ public class DataInitializer {
 				questions.get(5)));
 		answers.add(new Answer(17, "No", 2, questions.get(5)));
 
-		answers.add(new Answer(18, "Love", 0, questions.get(6)));
-		answers.add(new Answer(19, "Knowledge", 1, questions.get(6)));
-		answers.add(new Answer(20, "Wealth", 2,questions.get(6)));
+		answers.add(new Answer(18, "Java", 0, questions.get(6)));
+		answers.add(new Answer(19, "JavaScript", 1, questions.get(6)));
+		answers.add(new Answer(20, ".NET", 2,questions.get(6)));
+		
 	}
 
 	public void addNewUser(String name, String password, String facebook,
@@ -210,6 +215,54 @@ public class DataInitializer {
 		listPoints.add(2);
 		listPoints.add(2);
 		listPoints.add(2);
+		return listPoints;
+	}
+	
+	public List<Integer> customRado() {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(2);
+		listPoints.add(1);
+		listPoints.add(2);
+		listPoints.add(0);
+		listPoints.add(2);
+		listPoints.add(1);
+		listPoints.add(1);
+		return listPoints;
+	}
+	
+	public List<Integer> customIvo() {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(1);
+		listPoints.add(2);
+		listPoints.add(2);
+		listPoints.add(0);
+		listPoints.add(1);
+		listPoints.add(1);
+		listPoints.add(1);
+		return listPoints;
+	}
+	
+	public List<Integer> customCveti() {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(1);
+		listPoints.add(1);
+		listPoints.add(2);
+		listPoints.add(0);
+		listPoints.add(1);
+		listPoints.add(2);
+		listPoints.add(0);
+		return listPoints;
+	}
+	
+	public List<Integer> customGabi() {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(2);
+		listPoints.add(1);
+		listPoints.add(2);
+		listPoints.add(2);
+		listPoints.add(1);
+		listPoints.add(0);
+		listPoints.add(0);
 		return listPoints;
 	}
 

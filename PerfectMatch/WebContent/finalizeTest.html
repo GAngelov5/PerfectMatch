@@ -14,29 +14,49 @@ $(document).ready(
 				type : "GET",
 				dataType : "json",
 				success : function(data) {
-					var str = "<ul>";
+					
 					for ( var key in data) {
 						var points = data[key].indexOf("_");
-						str += "<li>" + key + ": "
-								+ data[key].substring(0, points) + "%    "
+						var row = $("<tr />");
+						$("#result_table").append(row);
+						row.append($("<td>" + key + "</td>"));
+				        row.append($("<td>" + data[key].substring(0, points) + "% " + "</td>"));
+				        row.append($("<td>" + "<a href=\"" +data[key].substring(points+1, data[key].length) + "\">Facebook</a>" + "</td>"));
+						/* str += "<td>" + key + ": "
+								+ data[key].substring(0, points) + "%"
 								+ "<a href=\"" +data[key].substring(points+1, data[key].length) + "\">Facebook</a>"
-						"</li>";
+						"</li>"; */
 					}
-					str += "</ul>";
-					$("body").append(str);
+					/* str += "</ul>";
+					$("body").append(str); */
 				}
 			});
 		});
 </script>
 </head>
-<body>
+<body class="final">
 
-<section class="match">
-	<div class="title">Your perfect match is:</div>
-        <p></p>
-            <label class="resultMatch">Stela</label>
-        <p></p>
-		
-</section>
+<div class="finalizeLook">
+
+	<section class="match">
+		<div class="title"><h3> Your perfect matches are:</h3></div>
+	        
+	        <p></p>
+	            <div>
+		            <table id="result_table" class="table">
+						<tr>
+							<th>Name</th>
+							<th>Match</th>
+							<th>Contact</th>
+						</tr>
+					</table>
+			</div>
+	        <p></p>
+	        
+			
+	</section>
+	<a href="index.html"><button
+							class="btn-primary" type="submit">Back</button></a>
+</div>
 </body>
 </html>
