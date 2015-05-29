@@ -7,22 +7,26 @@
 <link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script>
-$(document).ready(function(){
-	 $.ajax({
-	        url : '/PerfectMatch/rest/test/getresults',
-	        type : "GET",
-	        dataType : "json",
-	        success : function(data) {
-	        	for (var key in data) {
-	        		str += "<li>" + key + ": "+data[key]+"</li>";
-	        	}
-	        	str += "</ul>";
-	        	$("body").append(str);
-	        }
-	    });
-});
-
-
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : '/PerfectMatch/rest/test/getresults',
+					type : "GET",
+					dataType : "json",
+					success : function(data) {
+						var str = "<ul>";
+						for ( var key in data) {
+							var points = data[key].indexOf("_");
+							str += "<li>" + key + ": "
+									+ data[key].substring(0, points) + " fb: "
+									+ "<a href=\"" +data[key].substring(points+1, data[key].length) + "\">Facebook</a>"
+							"</li>";
+						}
+						str += "</ul>";
+						$("body").append(str);
+					}
+				});
+			});
 </script>
 </head>
 <body>

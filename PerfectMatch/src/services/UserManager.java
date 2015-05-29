@@ -3,7 +3,6 @@ package services;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,10 +10,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.google.gson.Gson;
-
-import models.Answer;
-import models.LoginUser;
 import models.User;
 import dummyDatabase.Data;
 
@@ -27,7 +22,6 @@ public class UserManager {
 
 	//private UserContext currentUser;
 	
-	private Data testData = new Data();
 	//private User currentUser;
 
 	@POST
@@ -35,9 +29,14 @@ public class UserManager {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void registerUser(User newUser) {
 		//User newUser = new User(name, password, facebook, gender);
-		testData.addNewUser(newUser);
-		//currentUser.setCurrentUser(newUser); 
 		UserContext.currentUser = newUser;
+		System.out.println("Noviq user: " + UserContext.currentUser.getName());
+		System.out.println("Noviq user: " + UserContext.currentUser.getPassword());
+		System.out.println("Noviq user: " + UserContext.currentUser.getGender());
+		System.out.println("Noviq user: " + UserContext.currentUser.getFacebook());
+		Data.data.addNewUser(UserContext.currentUser);
+		System.out.println("Bazata danni " + Data.data.getUsers().size());
+		//currentUser.setCurrentUser(newUser); 
 		//userContext.setCurrentUser(newUser);
 	}
 	
@@ -49,9 +48,13 @@ public class UserManager {
 //		if ( userDao.validateUserCredentials(user.getName(), user.getPassword())) {
 //			userContext.setCurrentUser(user);
 //		}
-		if (testData.isCorrect(newUser.getName(), newUser.getPassword())) {
+		if (Data.data.isCorrect(newUser.getName(), newUser.getPassword())) {
 			//currentUser.setCurrentUser(newUser);
 			UserContext.currentUser = newUser;
+			UserContext.currentUser.setGender(Data.data.getUserGender(newUser));
+			UserContext.currentUser.setFacebook(Data.data.getUserFacebook(newUser));
+			Data.data.addNewUser(UserContext.currentUser);
+
 		}
 		//System.out.println(newUser.getName());
 	}
@@ -60,7 +63,7 @@ public class UserManager {
 	@Path("getAllUsers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<User> getUserName() {
-		return testData.getUsers();
+		return Data.data.getUsers();
 	}
 
 	@GET
@@ -71,4 +74,5 @@ public class UserManager {
 		// get  from UserContext currentUser and print his name !
 	}
 	
+
 }
