@@ -6,6 +6,25 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+.html {
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+/* set background image per page */
+.home {
+background: url('wallpaper/panda3.png') no-repeat center center fixed;
+}
+.question {
+background: url('wallpaper/rose.jpg') no-repeat center center fixed;
+}
+.final{
+background: url('https://www.google.bg/search?q=photos&biw=1218&bih=635&source=lnms&tbm=isch&sa=X&ei=YBFoVcLwD4GR7AbnqYHwDQ&ved=0CAYQ_AUoAQ#q=photos&tbm=isch&tbs=isz:l&imgrc=G7C3AmYUhjxNmM%253A%3BVxHYeDdtAei47M%3Bhttp%253A%252F%252F7-themes.com%252Fdata_images%252Fout%252F47%252F6929340-red-rose-photos.jpg%3Bhttp%253A%252F%252F7-themes.com%252F6929340-red-rose-photos.html%3B1920%3B1200') no-repeat center center fixed;
+}
+
 html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="home-bg">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -63,9 +63,9 @@
 	};
 </script>
 </head>
-<body>
+<body class="question">
 	<section class="questions">
-		<div class="title">Questions</div>
+		<div class="title" style=color:#a13c64; > Question </div>
 		<!--<input type="text" id="user" required title="Username required" placeholder="Username" data-icon="U">
 				<input type="password" required title="Password required" placeholder="Password" data-icon="x">
 				<input type="password" required title="Password required" placeholder="Repeat Password" data-icon="x">
@@ -92,7 +92,9 @@
 				id="answer3" for="radio1"></label>
 		</div>
 		<p></p>
-		<button onClick="getAnswer()" class="btn btn-primary">Next</button>
+		<div class="btnArea2"><button id="nextButton" class="btn-primary2"
+				style="background-color:#a13c64;color:white" onClick="getAnswer()"> Next </button></div>
+		<!-- <button onClick="getAnswer()" class="btn btn-lg" style="background-color:#a13c64;color:white"> Next </button> -->
 		<p></p>
 	</section>
 </body>

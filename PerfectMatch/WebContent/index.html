@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>PerfectMatch</title>
-<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" /> 
 <link rel="stylesheet" type="text/css" href="styles/perfectmatch.css" />
+
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
 	function loginUser() {
@@ -12,10 +13,10 @@
 		var password = $("#inputPassword").val();
 
 		var data = {
-				user: {
-					name : username,
-					password : password,
-				}
+			user : {
+				name : username,
+				password : password,
+			}
 		}
 
 		$.ajax({
@@ -23,43 +24,67 @@
 			type : 'POST',
 			contentType : 'application/json',
 			data : JSON.stringify(data)
-		}).success(
-			function(data) {
-				//$("#register_form").attr("action", "register.html");
-				window.location = "/PerfectMatch/prepareTest.html";
-						//.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+		}).success(function(data) {
+			//$("#register_form").attr("action", "register.html");
+			window.location = "/PerfectMatch/prepareTest.html";
+			//.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
 		}).fail(function(data) {
 			alert("Something is wrong");
-	});
+		});
 
 	};
 </script>
+
 </head>
 
-<body>
-	<div align="center">
-		<h1>The Perfect Match</h1>
-	</div>
-	<div class="container">
+<body class="home";" >
+	<div align="center"></div>
+	<div class="signin">
 		<div class="col-md-3">
-			<h2 class="form-signin-heading">Sign in</h2>
+			<h2 class="title">Sign in</h2>
 			<label for="inputUsername" class="sr-only">Username</label> <input
 				type="text" id="inputUsername" class="form-control"
 				placeholder="Username" required autofocus> <label
 				for="inputPassword" class="sr-only">Password</label> <input
 				type="password" id="inputPassword" class="form-control"
 				placeholder="Password" required>
+
+			<p class="freeSpace"></p>
+			<div class="btnContainer">
+				<div class="btnArea">
+					<button id="loginButton" class="btn-primary" onClick="loginUser()">Login</button>
+				</div>
+				<div class="btnArea">
+					<a href="register.html" class="register_form"><button
+							class="btn-primary" type="submit">Register</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div align="center">
+
+	</div>
+	<div class="container">
+		<div class="col-md-3">
+			<h2 class="form-signin-heading"> Sign in </h2>
+			<label for="inputUsername" class="sr-only"> Username </label> <input
+				type="text" id="inputUsername" class="form-control"
+				placeholder="Username" required autofocus> <label
+				for="inputPassword" class="sr-only">Password</label> <input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required>
 			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
-					Remember me
-				</label>
+				
 			</div>
 			<button id="loginButton" class="btn btn-primary"
 				onClick="loginUser()">Login</button>
 			<a href="register.html" class="register_form"><button
-					class="btn btn-primary" type="submit">Register</button></a>
+					class="login_button1" type="submit">Register</button></a>
 
 		</div>
 	</div>
+	 -->
+
 </body>
 </html>
