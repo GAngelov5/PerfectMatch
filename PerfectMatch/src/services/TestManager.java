@@ -122,9 +122,11 @@ public class TestManager {
 				
 			}
 			// tuk stavat procentite
-			double resultProcent = 100*(result)/(2*Data.data.getQuestions().size());
-			System.out.println("Resultat v procenti: " + resultProcent);
-			userPoints.put(people.get(user).getName(), result);
+			
+			double resultProcent = (1 - ((double) result)/(double) (2*Data.data.getQuestions().size()))*100;
+			Double percent = new Double(resultProcent);
+			System.out.println("Resultat v procenti: " + percent.intValue());
+			userPoints.put(people.get(user).getName(), percent.intValue());
 			System.out.println("Result variable: " + result);
 			System.out.println("Size of hashmap" + userPoints.size());
 			result = 0;
