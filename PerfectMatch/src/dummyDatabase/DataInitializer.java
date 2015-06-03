@@ -21,8 +21,12 @@ public class DataInitializer {
 
 		users.add(new User("Cvetelina Kostadinova", "123456", "https://www.facebook.com/cwetelinaaaa",
 				"f", customCveti()));
+		users.add(new User("Stella Gavrailova", "123456", "https://www.facebook.com/stella.gavrailova",
+				"f", customStella()));
+		users.add(new User("Galin Angelov", "123456", "https://www.facebook.com/galin.angelov1",
+				"m", customStella()));
 		users.add(new User("Atanas Yanchevski", "Test1234", "https://www.facebook.com/atanas.yanchevski",
-				"m", custom(2)));
+				"m", customNaso()));
 		users.add(new User("Ivaylo Bachvarov", "TestDa", "https://www.facebook.com/bachvarof", "m",
 				customIvo()));
 		users.add(new User("Radoslav Georgiev", "qwerty",
@@ -206,6 +210,18 @@ public class DataInitializer {
 		return listPoints;
 	}
 
+	public List<Integer> customNaso() {
+		List<Integer> listPoints = new ArrayList<Integer>();
+		listPoints.add(1);
+		listPoints.add(0);
+		listPoints.add(2);
+		listPoints.add(0);
+		listPoints.add(0);
+		listPoints.add(1);
+		listPoints.add(0);
+		return listPoints;
+	}
+	
 	public List<Integer> customStella() {
 		List<Integer> listPoints = new ArrayList<Integer>();
 		listPoints.add(2);

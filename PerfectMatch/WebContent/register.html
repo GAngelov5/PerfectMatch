@@ -24,7 +24,7 @@
 		}
 
 		$.ajax({
-					url : 'PerfectMatch/rest/user/register',
+					url : '/PerfectMatch/rest/user/register',
 					type : 'POST',
 					contentType : 'application/json',
 					data : JSON.stringify(data)
@@ -33,7 +33,7 @@
 						function(data) {
 							//$("#register_form").attr("action", "register.html");
 							window.location
-									.replace("http://localhost:8080/PerfectMatch/prepareTest.html");
+									.replace("/PerfectMatch/prepareTest.html");
 						}).fail(function(data) {
 					alert("Something is wrong");
 				});

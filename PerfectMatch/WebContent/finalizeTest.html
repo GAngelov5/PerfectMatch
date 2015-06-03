@@ -19,7 +19,7 @@ $(document).ready(
 						var points = data[key].indexOf("_");
 						var row = $("<tr />");
 						$("#result_table").append(row);
-						row.append($("<td>" + key + "</td>"));
+						row.append($("<td>  " + key + "</td>"));
 				        row.append($("<td>" + data[key].substring(0, points) + "% " + "</td>"));
 				        row.append($("<td>" + "<a href=\"" +data[key].substring(points+1, data[key].length) + "\">Facebook</a>" + "</td>"));
 						/* str += "<td>" + key + ": "
